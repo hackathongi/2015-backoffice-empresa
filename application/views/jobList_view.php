@@ -35,6 +35,7 @@
                         <th>Data inici</th>
                         <th>Data fi</th>
                         <th>Inscrits</th>
+			<th></th>
                     </tr>
                     </thead>
                     <tbody>
