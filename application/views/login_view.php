@@ -8,14 +8,6 @@
 
 ?>
 
-<form action="http://apisocial.wallyjobs.com/login" method="post">
-    <div class="form-group">
-        <label for="userEmail">Email</label>
-        <input type="email" class="form-control" id="userEmail" placeholder="Email">
-    </div>
-    <div class="form-group">
-        <label for="userPassword">Password</label>
-        <input type="password" class="form-control" id="userPassword" placeholder="Password">
-    </div>
+<form action="http://apisocial.wallyjobs.com/login/facebook" method="post">
     <button type="submit" class="btn btn-default">Login</button>
 </form>
