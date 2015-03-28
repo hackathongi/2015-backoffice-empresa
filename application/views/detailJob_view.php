@@ -19,6 +19,7 @@
     <article class="offer-status">
 
         <h1 class="offer-title"><?php echo $job_detail['title']; ?></h1>
+        <span><img src="<?= $job_detail['picture_url']; ?>"/></span>
 
         <p><?= $job_detail['description']; ?></p>
         <section class="offer-applicants">
@@ -29,6 +30,7 @@
             $counter = 1;
             foreach($appliers as $dataUser):
                 $foto = "https://pbs.twimg.com/profile_images/378800000572625171/5e0f212228fa6ebf35fc28efab092f82_bigger.jpeg";//TODO $dataUser['foto']; FIXME
+                //$foto = $dataUser['foto'];
                 $nom = $dataUser['name'];
                 ?>
 
