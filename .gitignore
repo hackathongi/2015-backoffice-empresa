@@ -18,5 +18,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 .idea/*
 .idea/**/*
 
-/config/database.php
-/config/config.php
+application/config/database.php
+application/config/config.php
