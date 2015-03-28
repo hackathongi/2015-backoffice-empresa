@@ -9,6 +9,9 @@
 ?>
 
 <div class="table-responsive">
+    <form action="<?php echo base_url(); ?>/job" method="post">
+        <button type="submit" class="btn btn-add">Nova oferta</button>
+    </form>
     <table class="table table-bordered table-hover">
         <tr class="active">
             <td>#</td>
@@ -40,4 +43,7 @@
         }
     ?>
     </table>
+    <form action="<?php echo base_url(); ?>/job" method="post">
+        <button type="submit" class="btn btn-add">Nova oferta</button>
+    </form>
 </div>
