@@ -8,9 +8,8 @@
 
 	<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
-    <link type="text/css" href="css/hackajobs-stylesheet.css" rel="stylesheet">
+    <link type="text/css" href="//admin.wallyjobs.com/application/assets/css/hackajobs-stylesheet.css" rel="stylesheet">
     <link type='text/css' rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>../application/assets/css/hackajobs-stylesheet.css">
 
 	<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
