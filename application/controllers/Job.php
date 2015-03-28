@@ -21,7 +21,9 @@ class Job extends CI_Controller {
 
     public function index()
     {
-        $user_id=$this->session->userdata('user_id');
+        // NO BORRAR!
+        //$user_id=$this->session->userdata('user_id');
+        $user_id=1;
         if(!isset($user_id)){
             $user_id = $_REQUEST['id'];
             $this->session->set_userdata('user_id', $user_id);
@@ -97,8 +99,32 @@ class Job extends CI_Controller {
             $this->index();
         }
     }
-
-    private function share(){
+    /*
+    public function update($job_id){
+        
+        $deleted = $this->job->delete($job_data)
+        
+        if (!$deleted){
+            error("Ops! Database error!");
+        }else {
+            $this->index();
+        }
+    }
+    
+    
+    public function delete($job_id){
+        
+        $deleted = $this->job->delete($job_data)
+        
+        if (!$deleted){
+            error("Ops! Database error!");
+        }else {
+            $this->index();
+        }
+    }
+    */
+    private function share($job_data){
+        
         //TODO ADAPTER a los parametros facebook API! y compartir
     }
 
