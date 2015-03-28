@@ -78,17 +78,18 @@ class Job extends CI_Controller {
         foreach($appliers as &$applier){
             $filter['user2_id'] = $applier['id'];
             $applier_friends = $this->user->get_common_friends($filter);
+            if(empty($applier_friends)) { $applier_friends = array(); }
             $applier['friends'] = $applier_friends;
         }
         $data['numInscrits']=$numAppliers;
         $data['appliers']=$appliers;
         $data['job_detail']=$jobDetail;
-        print_r($data);
-/*        $this->load->view('header');
+        echo "<div style='display:none'>".print_r($data)."</div>";
+        $this->load->view('header');
         //$this->load->view('topbar_view');
         $this->load->view('detailJob_view', $data);
         $this->load->view('footer');
-*/    }
+    }
 
     public function error($error)
     {
