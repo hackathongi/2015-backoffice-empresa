@@ -21,7 +21,7 @@
             <td>Action</td>
         </tr>
     <?php
-        foreach($jobs as $job){
+        foreach($jobs_list as $job){
     ?>
         <tr class="success">
             <td><?php $job['id']; ?></td>
