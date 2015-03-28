@@ -99,7 +99,30 @@ class Job extends CI_Controller {
             $this->index();
         }
     }
-
+    /*
+    public function update($job_id){
+        
+        $deleted = $this->job->delete($job_data)
+        
+        if (!$deleted){
+            error("Ops! Database error!");
+        }else {
+            $this->index();
+        }
+    }
+    
+    
+    public function delete($job_id){
+        
+        $deleted = $this->job->delete($job_data)
+        
+        if (!$deleted){
+            error("Ops! Database error!");
+        }else {
+            $this->index();
+        }
+    }
+    */
     private function share($job_data){
         
         //TODO ADAPTER a los parametros facebook API! y compartir
