@@ -29,9 +29,27 @@ class Job extends CI_Controller {
     {       
         $job_data['owner_id'] = $this->session->userdata('user_id');
         $jobs_list = $this->job->get($job_data);
-
+        
+        foreach ($jobs_list as $key => $value){
+           //$job_id = $key;
+           //$job_id = $value['id'];
+            $job_appliers = $this->job->get_number_appliers($job_id);
+            $value['appliers'] = $job_appliers;
+        }
+        
         $this->load->view('header');
         $this->load->view('jobList_view', $jobs_list);
+        $this->load->view('footer');
+    }
+    
+    public function detail($id)
+    {     
+        $jobId['id'] = $id;
+        $jobDetail = $this->job->get($jobId);
+        
+        
+        $this->load->view('header');
+        $this->load->view('jobDetail_view', $jobDetail);
         $this->load->view('footer');
     }
     
@@ -56,7 +74,7 @@ class Job extends CI_Controller {
             }
             
         }else{
-            index();
+            $this->index();
         }
     }
     
