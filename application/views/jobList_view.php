@@ -25,10 +25,10 @@
                     <a href="#">Inici<br></a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url(); ?>/job/create">Alta Oferta<br></a>
+                    <a href="<?php echo base_url(); ?>job/create">Alta Oferta<br></a>
                 </li>
                 <li>
-                    <a href="#">Sortir</a>
+                    <a href="<?php echo base_url(); ?>login">Sortir</a>
                 </li>
             </ul>
         </div>
@@ -43,11 +43,11 @@
                         <a href="#">Inici</a>
                     </li>
                     <li>
-                        <a href="#">Llistat d'ofertes</a>
+                        <a href="<?php echo base_url(); ?>job/all">Llistat d'ofertes</a>
                     </li>
                 </ul>
                 <h1>Llistat d'ofertes</h1>
-                <a class="btn btn-primary" href="<?php echo base_url(); ?>/job/create">Crear oferta</a>
+                <a class="btn btn-primary" href="<?php echo base_url(); ?>job/create">Crear oferta</a>
             </div>
         </div>
         <div class="row">
