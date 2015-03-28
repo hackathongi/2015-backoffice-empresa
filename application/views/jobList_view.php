@@ -41,6 +41,7 @@
                     <?php
                     foreach($jobs_list as $job) {
                         ?>
+			<a href="/job/detail/<?= $job['id']; ?>">
                         <tr>
                             <td><?php echo $job['id']; ?></td>
                             <td><?php echo $job['title']; ?></td>
@@ -49,6 +50,7 @@
                             <td><?php echo $job['end_date']; ?></td>
                             <td><?php echo $job['appliers']; ?></td>
                         </tr>
+			</a>
                     <?php
                     }
                     ?>
