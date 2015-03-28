@@ -9,7 +9,7 @@ $dataIni = date("Y-m-d");
 
 ?>
 
-<form action="<?php echo base_url(); ?>/job/create" method="post">
+<form action="<?php echo base_url(); ?>job/create" method="post">
     <div class="form-group">
         <label for="jobTitle">Títol</label>
         <input type="text" class="form-control" id="jobTitle" name="title" placeholder="Nom de l'oferta" />
