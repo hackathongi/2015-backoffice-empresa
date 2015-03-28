@@ -18,25 +18,39 @@ class User_model extends CI_Model{
         //$this->load->database();
     }
 
-    function getUser($id)
+    /**
+     * Recupera un user
+     * @param Array $user_data
+     * @return if exists return array, else false
+     */
+    function get($user_data)
     {
         try{
-            $where_conditions = array('id' => $id);
+            $query = $this->db->get_where('tbl_user', $user_data);
 
-            $query = $this->db->get_where('tbl_user', $where_conditions);
-
-            return $query->row_array();
+            if ($query->num_rows() > 0) {
+                return $query->row();
+            }
+            else {
+                return false;
+            }
         } catch (Exception $e) {
-            echo 'UserModel Exception: ',  $e->getMessage(), "\n";
+            return false;
         }
     }
 
-    function getCommonFriends($userAId, $userBId)
+    /**
+     * Recupera les amistats en comú de dos users
+     * @param Array $user_data
+     * @return if exists return array, else false
+
+     */
+    function getCommonFriends($user_data)
     {
         try{
             // TODO ApiFacebook getCommonFriends
         } catch (Exception $e) {
-            echo 'UserModel Exception: ',  $e->getMessage(), "\n";
+            return false;
         }
     }
 }
