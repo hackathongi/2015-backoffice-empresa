@@ -38,7 +38,7 @@ $dataIni = date("Y-m-d");
             </div>
             <div class="form-group new-offer-date-end">
                 <label class="control-label" for="new-offer-date-end">Data fi</label>
-                <input class="form-control datepicker" id="new-offer-date-end" name type="text">
+                <input class="form-control datepicker" id="new-offer-date-end" name="end_date" type="text">
             </div>
             <div class="form-group new-offer-location">
                 <label class="control-label" for="new-offer-location">Població</label>
