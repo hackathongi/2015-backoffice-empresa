@@ -6,82 +6,90 @@
  */
 class Job extends CI_Controller {
     //put your code here
-    
+
     public function __construct()
     {
-       parent::__construct();
-       //$this->load->model('sport/user_model','user');
-       //$this->load->model('sport/calendar_model','cal');
-       //$this->load->model('sport/map_model','map');
+        parent::__construct();
+        //$this->load->model('sport/user_model','user');
+        //$this->load->model('sport/calendar_model','cal');
+        //$this->load->model('sport/map_model','map');
 
-       $this->load->model('job_model','job');
+        $this->load->model('job_model','job');
 
     }
 
     public function index()
     {
+
         $this->load->view('header');
         $this->load->view('jobCreation_view');
         $this->load->view('footer');
     }
-    
+
     public function all()
-    {       
-        $job_data['owner_id'] = $this->session->userdata('user_id');
-        $jobs_list = $this->job->get($job_data);
-        
-        foreach ($jobs_list as $key => $value){
-           //$job_id = $key;
-           //$job_id = $value['id'];
-            $job_appliers = $this->job->get_number_appliers($job_id);
+    {
+        $user_id=$this->session->userdata('user_id');
+        if(!isset($user_id)){
+            $user_id=NULL;
+        }
+        $job_data['owner_id'] = $user_id;
+        $jobs_list = $this->job->get($user_id);
+        //print_r($jobs_list);
+
+        foreach($jobs_list as &$value){
+            //$job_id = $key;
+            $job_id = $value['id'];
+            $job_appliers = $this->job->get_number_appliers(array('id'=>$job_id));
             $value['appliers'] = $job_appliers;
         }
-        
+        //print_r($jobs_list);
+        $data=array('jobs_list'=>$jobs_list);
         $this->load->view('header');
-        $this->load->view('jobList_view', $jobs_list);
+        $this->load->view('jobList_view', $data);
         $this->load->view('footer');
     }
-    
+
     public function detail($id)
-    {     
+    {
         $jobId['id'] = $id;
         $jobDetail = $this->job->get($jobId);
-        
-        
+
+        $data=array('job_detail'=>$jobDetail);
         $this->load->view('header');
-        $this->load->view('jobDetail_view', $jobDetail);
+        $this->load->view('jobDetail_view', $data);
         $this->load->view('footer');
     }
-    
-    public function error($data)
+
+    public function error($error)
     {
+        $data=array('error'=>$error);
         $this->load->view('header');
         $this->load->view('error_view', $data);
         $this->load->view('footer');
     }
-    
+
     public function create(){
         $valid = $this->validate_params();
- 
+
         if ($valid){
-            $params = $this->get_params();            
+            $params = $this->get_params();
             $created = $this->job->create($params);
             if($created){
                 $shared = $this->share($params);
                 all();
             }else{
-               error("Ops! Database error!"); 
+                error("Ops! Database error!");
             }
-            
+
         }else{
             $this->index();
         }
     }
-    
+
     private function share(){
         //TODO ADAPTER a los parametros facebook API! y compartir
     }
-    
+
 
     private function get_params(){
         $params['title'] = $_POST['title'];
@@ -89,7 +97,7 @@ class Job extends CI_Controller {
         $params['start_date'] = $_POST['start_date'];//TODO formato data
         $params['end_date'] = $_POST['end_date'];
         $params['city'] = $_POST['city'];
-        
+
         if (isset($_POST['latitude']))
             $params['latitude'] = $_POST['latitude'];
         else
@@ -105,24 +113,26 @@ class Job extends CI_Controller {
             $params['picture_url'] = "";
 
         $params['owner_id'] = $this->session->userdata('user_id');
-                
+
         return $params;
     }
-    
+
     private function validate_params(){
+        $this->load->helper(array('form','url'));
+        $this->load->library('form_validation');
         $this->form_validation->set_rules('title', 'Títol', 'required');
         $this->form_validation->set_rules('description', 'Descripció', 'required');
         $this->form_validation->set_rules('start_date', 'Data inici', 'required');
         $this->form_validation->set_rules('end_date', 'Data fi', 'required');
         $this->form_validation->set_rules('city', 'Ciutat', 'required');
-        
+
         if ($this->form_validation->run() == FALSE)
         {
-                return FALSE;
+            return FALSE;
         }
         else
         {
-                return TRUE;
+            return TRUE;
         }
     }
     /*
@@ -144,5 +154,5 @@ class Job extends CI_Controller {
         $this->load->view('error_view', $job_list);
         $this->load->view('footer');
     }*/
-    
+
 }

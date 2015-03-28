@@ -7,13 +7,13 @@
  */
 
 class Job_model extends CI_Model {
-    
+
     public function __construct()
     {
         parent::__construct();
         //$this->load->database();
     }
-    
+
     /**
      * Crea un job
      * @param Array $job_data
@@ -26,18 +26,21 @@ class Job_model extends CI_Model {
             return false;
         }
     }
-    
+
     /**
      * Recupera un job
      * @param Array $job_data
      * @return boolean/Array
      */
-    function get($job_data) {
+    function get($job_data = null) {
         try{
-            $query = $this->db->get_where('tbl_job', $job_data);
-            
+            if(!is_null($job_data)):
+                $query = $this->db->get_where('tbl_job', $job_data);
+            else:
+                $query = $this->db->get('tbl_job');
+            endif;
             if ($query->num_rows() > 0) {
-               return $query->row();
+                return $query->result_array();
             }
             else {
                 return false;
@@ -46,12 +49,12 @@ class Job_model extends CI_Model {
             return false;
         }
     }
-    
+
     /**
      * Actualitza un job
      * @param int $job_id
      * @param Array $job_data
-     * @return boolean 
+     * @return boolean
      */
     function update($job_id, $job_data) {
         try{
@@ -61,7 +64,7 @@ class Job_model extends CI_Model {
             return false;
         }
     }
-    
+
     /**
      * Elimina un job
      * @param Array $job_data
@@ -90,7 +93,7 @@ class Job_model extends CI_Model {
     }
 
     /**
-     * Get appliers from specific job
+     * Get number users appliers from specific job
      * @param Array $job_data
      * @return boolean
      */
