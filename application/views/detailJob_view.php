@@ -20,6 +20,7 @@
 
         <h1 class="offer-title"><?php echo $job_detail['title']; ?></h1>
 
+        <p><?= $job_detail['description']; ?></p>
         <section class="offer-applicants">
             <h4 class="applicants-title">Hi han aplicat <?= $numInscrits ?> persones:</h4>
 
