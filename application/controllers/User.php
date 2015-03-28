@@ -29,10 +29,9 @@ class Welcome extends CI_Controller {
            
         }
     
-	public function index()
+	public function delete()
 	{
-                $dades = array("test" => "test2");
-                $this->welcome->test($dades);
-		$this->load->view('test_view');
+            $this->session->sess_destroy();
+            $this->load->view('login_view');
 	}
 }
