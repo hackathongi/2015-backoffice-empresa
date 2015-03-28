@@ -21,7 +21,27 @@ class Job_model extends CI_Model {
      */
     function create($job_data) {
         try {
-            return $this->db->insert('tbl_job', $job_data);
+            $title = $job_data['title'];
+            $description = $job_data['description'];
+            $start_date = $job_data['start_date'];
+            $end_date = explode('/',$job_data['end_date']);
+            $end_date = $end_date[2]."-".$end_date[0]."-".$end_date[1];
+            $city = $job_data['city'];
+            
+            $latitude = $job_data['latitude'];
+            $longitude = $job_data['longitude'];
+            $picture_url = $job_data['picture_url'];
+            $owner_id = $job_data['owner_id'];
+            
+            if($latitude=='') $latitude = null;
+            if($longitude=='') $longitude = null;
+            
+            $query="INSERT INTO tbl_job (title, description, start_date, "
+                    . "end_date, city, latitude, longitude, picture_url, owner_id)"
+                    . " VALUES('". $title ."','". $description ."',"
+                    . "'". $start_date ."','". $end_date ."','". $city ."', "
+                    . "'". $latitude ."', '". $longitude ."', '". $picture_url ."', ". $owner_id .")";
+            return $this->db->query($query);
         } catch (Exception $ex) {
             return false;
         }
@@ -113,7 +133,7 @@ class Job_model extends CI_Model {
         join tbl_contact c on c.user_id = u.id
         where j.id = 3;
     */
-    function get_appliers($job_data)
+    /*function get_appliers($job_data)
     {
         try {
             $this->db->select('tbl_user.name', 'tbl_contact.picture_url');
@@ -126,5 +146,18 @@ class Job_model extends CI_Model {
         } catch (Exception $ex) {
             return false;
         }
-    }
+    }*/
+    function get_appliers($idJob)
+   {
+       try {
+           $sql = "SELECT * from tbl_user where id in (SELECT user_id from tbl_application where job_id =".$idJob." )";
+           $query = $this->db->query($sql);
+           /*$this->db->join('tbl_user','tbl_application.user_id = tbl_user.id');
+           $this->db->where('tbl_application.job_id',$idJob);
+           $query = $this->db->get('tbl_user');*/
+           return $query->result_array();
+       } catch (Exception $ex) {
+           return false;
+       }
+   }
 }
