@@ -30,7 +30,7 @@ class Job_model extends CI_Model {
     /**
      * Recupera un job
      * @param Array $job_data
-     * @return boolean
+     * @return boolean/Array
      */
     function get($job_data) {
         try{
@@ -56,7 +56,7 @@ class Job_model extends CI_Model {
     function update($job_id, $job_data) {
         try{
             $this->db->where('id', $job_id);
-            $this->db->update('tbl_job', $job_data);
+            return $this->db->update('tbl_job', $job_data);
         } catch (Exception $ex) {
             return false;
         }
@@ -69,7 +69,7 @@ class Job_model extends CI_Model {
      */
     function delete($job_data) {
         try {
-            $this->db->delete('tbl_job', $job_data);
+            return $this->db->delete('tbl_job', $job_data);
         } catch (Exception $ex) {
             return false;
         }
