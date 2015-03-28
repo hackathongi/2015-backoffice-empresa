@@ -84,7 +84,7 @@ class Job extends CI_Controller {
         $data['numInscrits']=$numAppliers;
         $data['appliers']=$appliers;
         $data['job_detail']=$jobDetail;
-        echo "<div style='display:none'>".print_r($data)."</div>";
+        //echo "<div style='display:none'>".print_r($data)."</div>";
         $this->load->view('header');
         //$this->load->view('topbar_view');
         $this->load->view('detailJob_view', $data);
