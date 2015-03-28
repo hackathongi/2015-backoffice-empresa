@@ -49,6 +49,15 @@ class Job_model extends CI_Model {
             return false;
         }
     }
+    
+    function count($job_data= null) {
+        try{
+            $this->db->get_where('tbl_job', $job_data);
+            return $this->db->count_all_results();
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
 
     /**
      * Actualitza un job

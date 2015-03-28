@@ -8,94 +8,82 @@
 $dataIni = date("Y-m-d");
 
 ?>
-<div class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><span>WallyJobs</span></a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                    <a href="#">Inici<br></a>
-                </li>
-                <li class="active">
-                    <a href="#">Alta Oferta<br></a>
-                </li>
-                <li>
-                    <a href="#">Sortir</a>
-                </li>
-            </ul>
-        </div>
+<main class="container">
+    <ul class="breadcrumb">
+        <li>
+            <a href="<?php echo base_url(); ?>">Inici</a>
+        </li>
+        <li>
+            <a href="<?php echo base_url(); ?>job/create">Alta oferta</a>
+        </li>
+    </ul>
+    <div>
+        <?php echo validation_errors(); ?>
     </div>
-</div>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Inici</a>
-                    </li>
-                    <li>
-                        <a href="#">Alta oferta</a>
-                    </li>
-                </ul>
-                <h1>Alta oferta</h1>
-                <div>
-                    <?php echo validation_errors(); ?>
-                </div>
-                <form action="<?php echo base_url(); ?>job/create" method="post">
-                    <div class="form-group">
-                        <label class="control-label" for="exampleInputEmail1">Títol</label>
-                        <input class="form-control" id="exampleInputEmail1" placeholder="Introdueix el títol de l'oferta"
-                               type="text" name="title">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="jobDescription">Descripció</label>
-                        <textarea id="jobDescription" class="form-control" name="description" rows="3" placeholder="Descriu breument l'oferta"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="jobDateIni">Data ini</label>
-                        <div>
-                            <input id="jobDateIni" name="start_date" type="date" value="<?php echo $dataIni; ?>">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="jobDateFin">Data fi</label>
-                        <div>
-                            <input id="jobDateFin" name="end_date" type="date" >
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="jobCity">Població</label>
-                        <input class="form-control" id="jobCity" name="city" placeholder="Poblacio"
-                               type="text">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="jobLongitude">Latitud</label>
-                        <input class="form-control" id="jobLongitude" name="latitude" placeholder="Latitud"
-                               type="text">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="jobLatitude">Longitud</label>
-                        <input class="form-control" id="jobLatitude" name="longitude" placeholder="Longitud"
-                               type="text">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="input-1">Foto oferta</label>
-                        <input class="file" id="input-1" name="picture_url" type="file">
-                    </div>
-                    <a href="<?php echo base_url(); ?>" class="btn btn-danger">&lt;&lt; Tornar inici</a>
-
-                    <button type="submit" class="btn btn-primary">Publicar oferta a Facebook</button>
-                </form>
+    <article class="new-offer">
+        <h2 class="new-offer-title">Alta oferta</h2>
+        <hr/>
+        <form action="<?php echo base_url(); ?>job/create" method="post">
+            <div class="form-group new-offer-email">
+                <label class="control-label" for="new-offer-title">Títol</label>
+                <input class="form-control" id="new-offer-title" name="title" placeholder="Introdueix el títol de l'oferta" type="text">
             </div>
-        </div>
-    </div>
-</div>
+            <div class="form-group new-offer-description">
+                <label class="control-label" for="new-offer-description">Descripció</label>
+                <textarea class="form-control" name="description" rows="3" id="new-offer-description" placeholder="Descriu breument l'oferta"></textarea>
+            </div>
+            <div style="display:none" class="form-group new-offer-date-ini">
+                <label class="control-label" for="new-offer-date-ini">Data ini</label>
+                <input class="form-control" id="new-offer-date-ini" name="start_date" type="date" value="<?php echo $dataIni; ?>">
+            </div>
+            <div class="form-group new-offer-date-end">
+                <label class="control-label" for="new-offer-date-end">Data fi</label>
+                <input class="form-control datepicker" id="new-offer-date-end" name type="text">
+            </div>
+            <div class="form-group new-offer-location">
+                <label class="control-label" for="new-offer-location">Població</label>
+                <input class="form-control" id="new-offer-location" name="city" placeholder="Població" type="text" onchange="getLatLng()">
+            </div>
+            <div style="display:none" class="form-group new-offer-latitude">
+                <label class="control-label" for="new-offer-latitude">Latitud</label>
+                <input class="form-control" id="new-offer-latitude" name="latitude" placeholder="Latitud" type="text">
+            </div>
+            <div style="display:none" class="form-group new-offer-longitude">
+                <label class="control-label" for="new-offer-longitude">Longitud</label>
+                <input class="form-control" id="new-offer-longitude" name="longitude" placeholder="Longitud" type="text">
+            </div>
+            <div class="form-group new-offer-image">
+                <label class="control-label" for="new-offer-image">Foto oferta</label>
+                <input class="form-control" id="new-offer-image" name="picture_url" type="file">
+            </div>
+            <div class="form-group new-offer-submit">
+                <a class="btn btn-link" href="<?php echo base_url(); ?>"> Cancela</a>
+                <button type="submit" class="btn btn-primary">Publica</button>
+            </div>
+        </form>
+    </article>
+</main>
+<script type="text/javascript" src="js/hackajobs-stylesheet-dependencies.js"></script>
+<script type="text/javascript">
+    (function ($, window, document, undefined ) {
+// Break if datepicker is not present
+        if(!$.fn.datepicker) return;
+// Attach datepicker
+        $(".datepicker").datepicker({
+            language: "ca"
+        });
+    })( jQuery, window, document );
+</script>
+<script>
+    function getLatLng(){
+        //$.ajax({ url:'http://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=true',
+        $.ajax({ url:'http://maps.googleapis.com/maps/api/geocode/json?address=' + $( '#new-offer-location' ).val() + '&sensor=true',
+            success: function(data){
+                //alert(data.results[0].geometry.location.lat);
+                //alert('hola');
+                $( '#new-offer-longitude' ).val(data.results[0].geometry.location.lng);
+                $( '#new-offer-latitude' ).val(data.results[0].geometry.location.lat);
+            }
+        });
+    }
+</script>
