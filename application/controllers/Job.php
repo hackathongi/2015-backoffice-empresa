@@ -20,32 +20,39 @@ class Job extends CI_Controller {
 
     public function index()
     {
-            $this->load->view('header');
-            $this->load->view('jobCreation_view');
-            $this->load->view('footer');
+        $this->load->view('header');
+        $this->load->view('jobCreation_view');
+        $this->load->view('footer');
     }
+    
     public function all()
+    {       
+        $job_data['owner_id'] = $this->session->userdata('user_id');
+        $jobs_list = $this->job->get($job_data);
+
+        $this->load->view('header');
+        $this->load->view('jobList_view', $jobs_list);
+        $this->load->view('footer');
+    }
+    
+    public function error($data)
     {
-            $this->load->view('header');
-            $this->load->view('jobList_view');
-            $this->load->view('footer');
+        $this->load->view('header');
+        $this->load->view('error_view', $data);
+        $this->load->view('footer');
     }
     
     public function create(){
         $valid = validate_params();
  
         if ($valid){
-            $params = get_params();
-            $share = get_share();
-            
-            
+            $params = get_params();            
             $created = $this->job->create($params);
             if($created){
-                $shared = share($share);
-                //TODO COmpartir con face/etc
+                $shared = share($params);
                 all();
             }else{
-                
+               error("Ops! Database error!"); 
             }
             
         }else{
@@ -53,17 +60,11 @@ class Job extends CI_Controller {
         }
     }
     
-   
-    
-    private function share($share){
-        
+    private function share(){
+        //TODO ADAPTER a los parametros facebook API! y compartir
     }
     
-    private function get_share(){
-        $share['facebook'] = $_POST['facebook'];
-        
-        return $share;
-    }
+
     private function get_params(){
         $params['title'] = $_POST['title'];
         $params['description'] = $_POST['description'];
@@ -86,9 +87,7 @@ class Job extends CI_Controller {
             $params['picture_url'] = "";
 
         $params['owner_id'] = $this->session->userdata('user_id');
-        
-        // TODO COMPARTIR CON QUIEN (CHECKBOX)
-        
+                
         return $params;
     }
     
@@ -108,7 +107,24 @@ class Job extends CI_Controller {
                 return TRUE;
         }
     }
-    
-    
+    /*
+    public function detail(){
+        $jobs = array();
+        $id['id']=$this->session->userdata('user_id');
+        $jobs_list = $this->job->get($id);
+        $jobs_list_with_appliers = array();
+        
+        $i=0;
+        foreach($jobs_list as $key=>$value){
+           $jobs_list_with_appliers[$i] = $key;
+           $jobs_list_with_appliers[$key];
+           $i++;
+           //           $jobs_list_with_appliers['appliers'] = $this->job->get_number_appliers($key);  
+
+        }
+        $this->load->view('header');
+        $this->load->view('error_view', $job_list);
+        $this->load->view('footer');
+    }*/
     
 }
