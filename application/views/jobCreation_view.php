@@ -12,11 +12,11 @@ $dataIni = date("Y-m-d");
 <form action="<?php echo base_url(); ?>/job/create" method="post">
     <div class="form-group">
         <label for="jobTitle">Títol</label>
-        <input type="text" class="form-control" id="jobTitle" name="title" placeholder="Nom de l'oferta">
+        <input type="text" class="form-control" id="jobTitle" name="title" placeholder="Nom de l'oferta" />
     </div>
     <div class="form-group">
         <label for="jobDesc">Descripció</label>
-        <textarea id="jobDesc" rows="4" class="form-control" name="description" placeholder="Descripció" />
+        <textarea id="jobDesc" rows="4" class="form-control" name="description" placeholder="Descripció"></textarea>
     </div>
     <div class="form-group">
         <label for="jobDataIni">Data Ini</label>
