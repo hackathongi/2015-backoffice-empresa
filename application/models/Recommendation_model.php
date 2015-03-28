@@ -19,7 +19,7 @@ class Recommendation_model extends CI_Model {
     }
 
     /**
-     * Recupera un job
+     * Recupera una reccomendation
      * @param Array $recommendation_data
      * @return if exists return array, else false
      */
@@ -37,5 +37,4 @@ class Recommendation_model extends CI_Model {
             return false;
         }
     }
-
 }

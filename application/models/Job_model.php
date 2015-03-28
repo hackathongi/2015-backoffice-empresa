@@ -90,7 +90,7 @@ class Job_model extends CI_Model {
     }
 
     /**
-     * Get number users appliers from specific job
+     * Get appliers from specific job
      * @param Array $job_data
      * @return boolean
      */
