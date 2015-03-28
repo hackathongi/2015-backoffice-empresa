@@ -21,7 +21,9 @@ class Job extends CI_Controller {
 
     public function index()
     {
-        $user_id=$this->session->userdata('user_id');
+         NO BORRAR!
+        //$user_id=$this->session->userdata('user_id');
+        $user_id=1;
         if(!isset($user_id)){
             $user_id = $_REQUEST['id'];
             $this->session->set_userdata('user_id', $user_id);
@@ -98,7 +100,8 @@ class Job extends CI_Controller {
         }
     }
 
-    private function share(){
+    private function share($job_data){
+        
         //TODO ADAPTER a los parametros facebook API! y compartir
     }
 
