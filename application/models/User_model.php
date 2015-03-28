@@ -27,7 +27,6 @@ class User_model extends CI_Model{
     {
         try{
             $query = $this->db->get_where('tbl_user', $user_data);
-
             if ($query->num_rows() > 0) {
                 return $query->row();
             }
@@ -88,7 +87,9 @@ class User_model extends CI_Model{
             $this->db->where('tbl_job', $job_id);
             $this->db->where('tbl_user', $user_id);
 
-            return $this->db->get();
+            $query = $this->db->get();
+
+            return $query->result_array();
         } catch (Exception $e) {
             return false;
         }
