@@ -7,4 +7,4 @@
  */
 
 ?>
-<a href="https://apisocial.wallyjobs.com/login/facebook?urlOK=<?= urlencode('https://admin.wallyjobs.com')?>&urlKO=<?= urlencode('https://admin.wallyjobs.com');?>">Login Facebook</a>
+<meta http-equiv="refresh" content="0; url=https://apisocial.wallyjobs.com/login/facebook?urlOK=<?= urlencode('https://admin.wallyjobs.com')?>&urlKO=<?= urlencode('https://admin.wallyjobs.com');?>" />
