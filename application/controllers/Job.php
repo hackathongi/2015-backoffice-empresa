@@ -68,7 +68,7 @@ class Job extends CI_Controller {
     public function detail($id)
     {
         $jobId['id'] = $id;
-        $jobDetail = $this->job->get($jobId);
+        $jobDetail = $this->job->get($jobId)[0];
 
         $appliers=$this->job->get_appliers($id);
         $numAppliers = count($appliers);
@@ -77,11 +77,9 @@ class Job extends CI_Controller {
         $filter['user1_id'] = $this->session->userdata('user_id');
         foreach($appliers as &$applier){
             $filter['user2_id'] = $applier['id'];
-            $applier_friends = $this->user->get_common_friends($filter);
+            $applier_friends = array();//$this->user->get_common_friends($filter);
             $applier['friends'] = $applier_friends;
         }
-        echo "aaa";
-        print_r($appliers);
         $data['numInscrits']=$numAppliers;
         $data['appliers']=$appliers;
         $data['job_detail']=$jobDetail;
