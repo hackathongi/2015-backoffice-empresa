@@ -132,7 +132,7 @@ class Job_model extends CI_Model {
         join tbl_contact c on c.user_id = u.id
         where j.id = 3;
     */
-    function get_appliers($job_data)
+    /*function get_appliers($job_data)
     {
         try {
             $this->db->select('tbl_user.name', 'tbl_contact.picture_url');
@@ -145,5 +145,18 @@ class Job_model extends CI_Model {
         } catch (Exception $ex) {
             return false;
         }
-    }
+    }*/
+    function get_appliers($idJob)
+   {
+       try {
+           $sql = "SELECT * from tbl_user where id in (SELECT user_id from tbl_application where job_id =".$idJob." )";
+           $query = $this->db->query($sql);
+           /*$this->db->join('tbl_user','tbl_application.user_id = tbl_user.id');
+           $this->db->where('tbl_application.job_id',$idJob);
+           $query = $this->db->get('tbl_user');*/
+           return $query->result_array();
+       } catch (Exception $ex) {
+           return false;
+       }
+   }
 }
