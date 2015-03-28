@@ -74,4 +74,45 @@ class Job_model extends CI_Model {
             return false;
         }
     }
+
+    /**
+     * Get number users appliers from specific job
+     * @param Array $job_data
+     * @return int
+     */
+    function get_number_appliers($job_data) {
+        try{
+            $this->db->get_where('tbl_application', $job_data);
+            return $this->db->count_all_results();
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
+
+    /**
+     * Get number users appliers from specific job
+     * @param Array $job_data
+     * @return boolean
+     */
+    /*
+     *  select u.name, c.picture_url from tbl_job j
+        join tbl_application a on a.job_id = j.id
+        join tbl_user u on a.user_id = u.id
+        join tbl_contact c on c.user_id = u.id
+        where j.id = 3;
+    */
+    function get_appliers($job_data)
+    {
+        try {
+            $this->db->select('tbl_user.name', 'tbl_contact.picture_url');
+            $this->db->join('tbl_application', 'tbl_application.job_id = tbl_job.id');
+            $this->db->join('tbl_user', 'tbl_application.user_id = tbl_user.id');
+            $this->db->join('tbl_contact', 'tbl_contact.user_id = tbl_user.id');
+            $this->db->where('tbl_job',$job_data);
+
+            return $this->db->get();
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
 }
