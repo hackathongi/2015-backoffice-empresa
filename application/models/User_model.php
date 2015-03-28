@@ -50,7 +50,7 @@ class User_model extends CI_Model{
             $provider = "facebook";
             $user1 = $data['user1_id'];
             $user2 = $data['user2_id'];
-            $base_url = "/friends";
+            $base_url = "//apisocial.wallyjobs.com/friends";
 
             $url = $base_url."/".$provider."/".$user1."/".$user2;
 
