@@ -6,8 +6,8 @@
  * id           Int
  * description  String
  * cv_url       String
- * user_id      int
- * job_id       int
+ * user_id      int     // user fk
+ * job_id       int     // job fk
  */
 
 class Application_model extends CI_Model {
@@ -18,15 +18,23 @@ class Application_model extends CI_Model {
         //$this->load->database();
     }
 
-    function getApplication($id)
+    /**
+     * Recupera un application
+     * @param Array $application_data
+     * @return if exists return array, else false
+     */
+    function get($application_data)
     {
         try{
-            $where_conditions = array('id' => $id);
-
-            $query = $this->db->get_where('tbl_application', $where_conditions);
-            return $query->row_array();
+            $query = $this->db->get_where('tbl_application', $application_data);
+            if ($query->num_rows() > 0) {
+                return $query->row();
+            }
+            else {
+                return false;
+            }
         } catch (Exception $e) {
-            echo get_class(),  $e->getMessage(), "\n";
+            return false;
         }
     }
 }
