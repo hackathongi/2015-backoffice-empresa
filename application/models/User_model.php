@@ -56,9 +56,9 @@ class User_model extends CI_Model{
 
             $response = http_get($url, array("timeout"=>1), $info);
 
-            // TODO Check info return
-            return $info;
+            $jsonList = json_decode($info);
 
+            return $jsonList;
         } catch (Exception $e) {
             return false;
         }

@@ -77,17 +77,18 @@ class Job extends CI_Controller {
         $filter['user1_id'] = $this->session->userdata('user_id');
         foreach($appliers as &$applier){
             $filter['user2_id'] = $applier['id'];
-            $applier_friends = array();//$this->user->get_common_friends($filter);
+            $applier_friends = $this->user->get_common_friends($filter);
             $applier['friends'] = $applier_friends;
         }
         $data['numInscrits']=$numAppliers;
         $data['appliers']=$appliers;
         $data['job_detail']=$jobDetail;
-        $this->load->view('header');
+        print_r($data);
+/*        $this->load->view('header');
         //$this->load->view('topbar_view');
         $this->load->view('detailJob_view', $data);
         $this->load->view('footer');
-    }
+*/    }
 
     public function error($error)
     {
@@ -156,6 +157,11 @@ class Job extends CI_Controller {
         $this->form_validation->set_rules('start_date', 'Data inici', 'required');
         $this->form_validation->set_rules('end_date', 'Data fi', 'required');
         $this->form_validation->set_rules('city', 'Ciutat', 'required');
+        $this->form_validation->set_rules('longitude', 'Ciutat',
+          'callback_coord_missing');
+        $this->form_validation->set_rules('latitude', 'Ciutat',
+          'callback_coord_missing');
+
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -175,5 +181,14 @@ class Job extends CI_Controller {
         $job_data['owner_id'] = $user_id;
         $jobs_list = $this->job->get($job_data);
         return $jobs_list;
+    }
+
+    private function coord_missing($string) {
+      if ( strlen(trim($string)) == 0 ) {
+        $this->form_validation->set_message('city', 'Hem tingut un problema localitzant la teua oferta. Prova-ho de nou.');
+        return false;
+      } else {
+        return true;
+      }
     }
 }
