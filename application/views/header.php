@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php setlocale(LC_ALL,"es_ES"); ?>
-    <title><?php echo $title ?></title>
+    <title>WallyJobs</title>
 
 	<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
