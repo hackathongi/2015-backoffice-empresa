@@ -14,6 +14,7 @@ class Job extends CI_Controller {
        //$this->load->model('sport/calendar_model','cal');
        //$this->load->model('sport/map_model','map');
 
+       $this->load->helper('form');
        $this->load->model('job_model','job');
 
     }
