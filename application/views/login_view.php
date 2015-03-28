@@ -7,7 +7,4 @@
  */
 
 ?>
-
-<form action="http://apisocial.wallyjobs.com/login/facebook" method="post">
-    <button type="submit" class="btn btn-default">Login</button>
-</form>
+<a href="https://apisocial.wallyjobs.com/login/facebook?urlOK=admin.wallyjobs.com&urlKO=admin.wallyjobs.com">Login Facebook</a>

@@ -17,7 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/hack/index.php';
+#SERVER $config['base_url'] = 'http://192.168.4.80/hack/index.php';
+$config['base_url'] = 'https://admin.wallyjobs.com';
 
 /*
 |--------------------------------------------------------------------------

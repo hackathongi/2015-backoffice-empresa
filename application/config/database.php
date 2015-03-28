@@ -64,8 +64,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
+	'hostname' => 'mysql',
+	#SERVER 'username' => 'hackajob',
+	#SERVER 'password' => 'viyr683d',
+	#SERVER 'database' => 'Hackajob',
+        'username' => 'root',
 	'password' => '321289',
 	'database' => 'Hackajobs',
 	'dbdriver' => 'mysqli',
