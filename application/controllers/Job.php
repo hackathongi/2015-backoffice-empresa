@@ -16,6 +16,7 @@ class Job extends CI_Controller {
 
         $this->load->helper('form');
         $this->load->model('job_model','job');
+        $this->load->model('user_model','user');
 
     }
 
@@ -69,15 +70,24 @@ class Job extends CI_Controller {
         $jobId['id'] = $id;
         $jobDetail = $this->job->get($jobId);
 
-        $appliers=$this->job->get_appliers($jobId);
+        $appliers=$this->job->get_appliers($id);
         $numAppliers = count($appliers);
-        $data['numInscrits']=$numAppliers;
 
-        
+
+        $filter['user1_id'] = $this->session->userdata('user_id');
+        foreach($appliers as &$applier){
+            $filter['user2_id'] = $applier['id'];
+            $applier_friends = $this->user->get_common_friends($filter);
+            $applier['friends'] = $applier_friends;
+        }
+        echo "aaa";
+        print_r($appliers);
+        $data['numInscrits']=$numAppliers;
+        $data['appliers']=$appliers;
         $data['job_detail']=$jobDetail;
         $this->load->view('header');
         //$this->load->view('topbar_view');
-        $this->load->view('jobDetail_view', $data);
+        $this->load->view('detailJob_view', $data);
         $this->load->view('footer');
     }
 
@@ -168,25 +178,4 @@ class Job extends CI_Controller {
         $jobs_list = $this->job->get($job_data);
         return $jobs_list;
     }
-    
-    /*
-    public function detail(){
-        $jobs = array();
-        $id['id']=$this->session->userdata('user_id');
-        $jobs_list = $this->job->get($id);
-        $jobs_list_with_appliers = array();
-        
-        $i=0;
-        foreach($jobs_list as $key=>$value){
-           $jobs_list_with_appliers[$i] = $key;
-           $jobs_list_with_appliers[$key];
-           $i++;
-           //           $jobs_list_with_appliers['appliers'] = $this->job->get_number_appliers($key);  
-
-        }
-        $this->load->view('header');
-        $this->load->view('error_view', $job_list);
-        $this->load->view('footer');
-    }*/
-
 }
