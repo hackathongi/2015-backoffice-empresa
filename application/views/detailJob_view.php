@@ -10,21 +10,21 @@
 			<a href="<?php echo base_url();?>job/all">Llistat d'ofertes<br></a>
 		</li>
 		<li>
-			<a href="#"><?php echo $title.'['.$numInscrits.'inscrits]'; ?></a>
+			<a href="#"><?php echo $job_detail['title'].'['.$numInscrits.'inscrits]'; ?></a>
 		</li>
 	</ul>
 </div>
 <div class="row">
 	<div class="col-md-8">
-		<h1><?php echo $title; ?></h1>
+		<h1><?php echo $job_detail['title']; ?></h1>
 	</div>
 	<div class="col-md-4 text-right">
-		<h3><?php echo $dataFin; ?></h3>
+		<h3><?php echo $job_detail['end_date']; ?></h3>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<p contenteditable="true"><?php echo $description; ?></p>
+		<p contenteditable="true"><?php echo $job_detail['description']; ?></p>
 	</div>
 </div>
 
@@ -39,7 +39,6 @@
 			<th>#</th>
 			<th>Foto</th>
 			<th>Nom</th>
-			<th>Cognom</th>
 			<th>Recomenacions d'amics compartits</th>
 		</tr>
 	</thead>
@@ -47,17 +46,15 @@
 	<?php
 	$counter = 1;
 	foreach($appliers as $dataUser):
-		$foto = $dataUser['foto'];
-		$nom = $dataUser['nom'];
-		$cognom = $dataUser['cognom'];
+		$foto = "";//TODO $dataUser['foto']; FIXME
+		$nom = $dataUser['name'];
 	?>
 		<tr>
 			<td><?php echo $counter; ?></td>
 			<td><img src="<?php echo $foto; ?>" class="img-responsive"/></td>
 			<td><?php echo $nom; ?></td>
-			<td><?php echo $cognom; ?></td>
 			<?php
-			if(!(count($friends) > 0)):
+			if(!(count($dataUser['friends']) > 0)):
 			?><span class="label label-warning">No hi ha recomanacions</span><?php
 			else:
 				?><ul><?php

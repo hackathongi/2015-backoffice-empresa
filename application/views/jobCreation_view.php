@@ -76,8 +76,7 @@ $dataIni = date("Y-m-d");
 </script>
 <script>
     function getLatLng(){
-        //$.ajax({ url:'http://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=true',
-        $.ajax({ url:'http://maps.googleapis.com/maps/api/geocode/json?address=' + $( '#new-offer-location' ).val() + '&sensor=true',
+        $.ajax({ url:'https://maps.googleapis.com/maps/api/geocode/json?address=' + $( '#new-offer-location' ).val() + '&sensor=true',
             success: function(data){
                 //alert(data.results[0].geometry.location.lat);
                 //alert('hola');
