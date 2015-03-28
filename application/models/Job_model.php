@@ -61,4 +61,17 @@ class Job_model extends CI_Model {
             return false;
         }
     }
+    
+    /**
+     * Elimina un job
+     * @param Array $job_data
+     * @return boolean
+     */
+    function delete($job_data) {
+        try {
+            $this->db->delete('tbl_job', $job_data);
+        } catch (Exception $ex) {
+            return false;
+        }
+    }
 }
