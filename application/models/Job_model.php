@@ -24,7 +24,8 @@ class Job_model extends CI_Model {
             $title = $job_data['title'];
             $description = $job_data['description'];
             $start_date = $job_data['start_date'];
-            $end_date = $job_data['end_date'];
+            $end_date = explode('/',$job_data['end_date']);
+            $end_date = $end_date[2]."-".$end_date[0]."-".$end_date[1];
             $city = $job_data['city'];
             
             $latitude = $job_data['latitude'];
