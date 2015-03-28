@@ -16,7 +16,7 @@ $dataIni = date("Y-m-d");
     </div>
     <div class="form-group">
         <label for="jobDesc">Descripció</label>
-        <input type="text" class="form-control" id="jobDesc" name="description" placeholder="Descripció">
+        <textarea id="jobDesc" rows="4" class="form-control" name="description" placeholder="Descripció" />
     </div>
     <div class="form-group">
         <label for="jobDataIni">Data Ini</label>
@@ -24,7 +24,7 @@ $dataIni = date("Y-m-d");
     </div>
     <div class="form-group">
         <label for="jobDataFin">Data Fin</label>
-        <input type="text" class="form-control" id="jobDataFin" name="end_date">
+        <input type="date" class="form-control" id="jobDataFin" name="end_date">
     </div>
     <div class="form-group">
         <label for="jobCity">Ciutat</label>

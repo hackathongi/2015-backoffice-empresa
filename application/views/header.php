@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php setlocale(LC_ALL,"es_ES"); ?>
-    <title>GiDona</title>
+    <title>WallyJobs</title>
 
     <link type='text/css' href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css" rel='stylesheet' />
     <link type='text/css' href="<?php echo base_url(); ?>/assets/css/font-awesome.min.css" rel="stylesheet">
