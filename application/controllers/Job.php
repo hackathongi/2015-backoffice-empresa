@@ -29,9 +29,27 @@ class Job extends CI_Controller {
     {       
         $job_data['owner_id'] = $this->session->userdata('user_id');
         $jobs_list = $this->job->get($job_data);
-
+        
+        foreach ($jobs_list as $key => $value){
+           //$job_id = $key;
+           //$job_id = $value['id'];
+            $job_appliers = $this->job->get_number_appliers($job_id);
+            $value['appliers'] = $job_appliers;
+        }
+        
         $this->load->view('header');
         $this->load->view('jobList_view', $jobs_list);
+        $this->load->view('footer');
+    }
+    
+    public function detail($id)
+    {     
+        $jobId['id'] = $id;
+        $jobDetail = $this->job->get($jobId);
+        
+        
+        $this->load->view('header');
+        $this->load->view('jobDetail_view', $jobDetail);
         $this->load->view('footer');
     }
     
@@ -43,20 +61,20 @@ class Job extends CI_Controller {
     }
     
     public function create(){
-        $valid = validate_params();
+        $valid = $this->validate_params();
  
         if ($valid){
-            $params = get_params();            
+            $params = $this->get_params();            
             $created = $this->job->create($params);
             if($created){
-                $shared = share($params);
+                $shared = $this->share($params);
                 all();
             }else{
                error("Ops! Database error!"); 
             }
             
         }else{
-            index();
+            $this->index();
         }
     }
     
