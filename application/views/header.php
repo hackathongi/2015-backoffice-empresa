@@ -11,8 +11,11 @@
     <link type="text/css" href="//admin.wallyjobs.com/application/assets/css/hackajobs-stylesheet.css" rel="stylesheet">
     <link type='text/css' rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 
+	<script type="text/javascript" src="//admin.wallyjobs.com/application/assets/js/hackajobs-stylesheet-dependencies.min.js"></script>
+    <?php/*
 	<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    */?>
     <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 </head>
 <body class="col-md-12 col-lg-12 col-sm-12 col-xs-12 container">
