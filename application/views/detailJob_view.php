@@ -39,7 +39,7 @@
 
                     <?php
                     // Repeat for each applicant mutual friends
-                    foreach($friends as $dataFriends):
+                    foreach($dataUser['friends'] as $dataFriends):
                         $nomAmic = $dataFriends['nom'];
                         $urlAmic = $dataFriends['url'];
                         $recomana = $dataFriends['recomana'];
