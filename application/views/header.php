@@ -25,7 +25,7 @@
                 <span class="icon-bar"></span>
             </button>
             <div class="wally-logo">
-                <a href=""<?php echo base_url(); ?>"><img src="img/wallyJobsLogoHor.svg" alt="WallyJobs"/></a>
+                <a href="<?php echo base_url(); ?>"><img src="//admin.wallyjobs.com/application/assets/img/wallyJobsLogoHor.svg" alt="WallyJobs"/></a>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
