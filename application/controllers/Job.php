@@ -23,8 +23,10 @@ class Job extends CI_Controller {
     {
         $user_id=$this->session->userdata('user_id');
         if(!isset($user_id)){
-            $user_id=NULL;
+            $user_id = $_REQUEST['id'];
+            $this->session->set_userdata('user_id', $user_id);
         }
+        
         $job_data['owner_id'] = $user_id;
         $jobs_count = $this->job->count($user_id);
         
