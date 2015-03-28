@@ -21,7 +21,7 @@ class Job extends CI_Controller {
 
     public function index()
     {
-         NO BORRAR!
+        // NO BORRAR!
         //$user_id=$this->session->userdata('user_id');
         $user_id=1;
         if(!isset($user_id)){
