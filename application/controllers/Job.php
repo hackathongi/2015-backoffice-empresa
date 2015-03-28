@@ -158,10 +158,8 @@ class Job extends CI_Controller {
         $this->form_validation->set_rules('start_date', 'Data inici', 'required');
         $this->form_validation->set_rules('end_date', 'Data fi', 'required');
         $this->form_validation->set_rules('city', 'Ciutat', 'required');
-        $this->form_validation->set_rules('longitude', 'Ciutat',
-          'callback_coord_missing');
-        $this->form_validation->set_rules('latitude', 'Ciutat',
-          'callback_coord_missing');
+        $this->form_validation->set_rules('longitude', 'Ciutat','required');
+        $this->form_validation->set_rules('latitude', 'Ciutat','required');
 
 
         if ($this->form_validation->run() == FALSE)
@@ -184,6 +182,7 @@ class Job extends CI_Controller {
         return $jobs_list;
     }
 
+    /*
     private function coord_missing($string) {
       if ( strlen(trim($string)) == 0 ) {
         $this->form_validation->set_message('city', 'Hem tingut un problema localitzant la teua oferta. Prova-ho de nou.');
@@ -192,4 +191,5 @@ class Job extends CI_Controller {
         return true;
       }
     }
+     */
 }
