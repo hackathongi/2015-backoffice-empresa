@@ -43,13 +43,13 @@ class Job extends CI_Controller {
     }
     
     public function create(){
-        $valid = validate_params();
+        $valid = $this->validate_params();
  
         if ($valid){
-            $params = get_params();            
+            $params = $this->get_params();            
             $created = $this->job->create($params);
             if($created){
-                $shared = share($params);
+                $shared = $this->share($params);
                 all();
             }else{
                error("Ops! Database error!"); 
