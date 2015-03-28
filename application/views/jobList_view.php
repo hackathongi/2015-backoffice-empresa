@@ -21,7 +21,7 @@
                     </li>
                 </ul>
                 <h1>Llistat d'ofertes</h1>
-                <a class="btn btn-primary" href="<?php echo base_url(); ?>job/create">Crear oferta</a>
+                <a class="btn btn-primary" href="<?php echo base_url(); ?>job/form">Crear oferta</a>
             </div>
         </div>
         <div class="row">
