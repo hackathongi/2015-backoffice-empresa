@@ -1,0 +1,24 @@
+Slim Application Error
+The application could not run because of the following error:
+
+Details
+
+Type: Exception
+Code: 5
+Message: Authentication failed! The user denied your request.
+File: /data/http/2015-social-api/vendor/hybridauth/Hybrid/Auth.php
+Line: 153
+Trace
+
+#0 /data/http/2015-social-api/vendor/hybridauth/Hybrid/Auth.php(39): Hybrid_Auth::initialize(Array)
+#1 /data/http/2015-social-api/includes/routes.php(48): Hybrid_Auth->__construct(Array)
+#2 [internal function]: {closure}('facebookurlOK=a...')
+#3 /data/http/2015-social-api/vendor/slim/slim/Slim/Route.php(468): call_user_func_array(Object(Closure), Array)
+#4 /data/http/2015-social-api/vendor/slim/slim/Slim/Slim.php(1357): Slim\Route->dispatch()
+#5 /data/http/2015-social-api/vendor/slim/slim/Slim/Middleware/Flash.php(85): Slim\Slim->call()
+#6 /data/http/2015-social-api/vendor/slim/slim/Slim/Middleware/MethodOverride.php(92): Slim\Middleware\Flash->call()
+#7 /data/http/2015-social-api/vendor/slim/slim/Slim/Middleware/PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#8 /data/http/2015-social-api/vendor/slim/slim/Slim/Slim.php(1302): Slim\Middleware\PrettyExceptions->call()
+#9 /data/http/2015-social-api/index.php(21): Slim\Slim->run()
+#10 {main}
+188.166.61.120
